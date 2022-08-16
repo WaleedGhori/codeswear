@@ -14,6 +14,7 @@ const Tshirts = () => {
           <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-Shirts</h3>
           <h2 className="text-gray-900 title-font text-lg font-medium">Wear the Code</h2>
           <p className="mt-1">Rs 999</p>
+          <p>S, M, L, XL, XXL</p>
         </div>
       </div>
       </Link>
@@ -26,6 +27,7 @@ const Tshirts = () => {
           <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-Shirts</h3>
           <h2 className="text-gray-900 title-font text-lg font-medium">Wear the Code</h2>
           <p className="mt-1">Rs 999</p>
+          <p>S, M, L, XL, XXL</p>
         </div>
       </div>
       </Link>
@@ -38,6 +40,7 @@ const Tshirts = () => {
           <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-Shirts</h3>
           <h2 className="text-gray-900 title-font text-lg font-medium">Wear the Code</h2>
           <p className="mt-1">Rs 999</p>
+          <p>S, M, L, XL, XXL</p>
         </div>
       </div>
       </Link>
@@ -50,6 +53,7 @@ const Tshirts = () => {
           <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-Shirts</h3>
           <h2 className="text-gray-900 title-font text-lg font-medium">Wear the Code</h2>
           <p className="mt-1">Rs 999</p>
+          <p>S, M, L, XL, XXL</p>
         </div>
       </div>
       </Link>
@@ -62,6 +66,7 @@ const Tshirts = () => {
           <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-Shirts</h3>
           <h2 className="text-gray-900 title-font text-lg font-medium">Wear the Code</h2>
           <p className="mt-1">Rs 999</p>
+          <p>S, M, L, XL, XXL</p>
         </div>
       </div>
       </Link>
@@ -74,6 +79,7 @@ const Tshirts = () => {
           <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-Shirts</h3>
           <h2 className="text-gray-900 title-font text-lg font-medium">Wear the Code</h2>
           <p className="mt-1">Rs 999</p>
+          <p>S, M, L, XL, XXL</p>
         </div>
       </div>
       </Link>
@@ -86,6 +92,7 @@ const Tshirts = () => {
           <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-Shirts</h3>
           <h2 className="text-gray-900 title-font text-lg font-medium">Wear the Code</h2>
           <p className="mt-1">Rs 999</p>
+          <p>S, M, L, XL, XXL</p>
         </div>
       </div>
       </Link>
@@ -98,6 +105,7 @@ const Tshirts = () => {
           <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-Shirts</h3>
           <h2 className="text-gray-900 title-font text-lg font-medium">Wear the Code</h2>
           <p className="mt-1">Rs 999</p>
+          <p>S, M, L, XL, XXL</p>
         </div>
       </div>
       </Link>
@@ -110,6 +118,7 @@ const Tshirts = () => {
           <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-Shirts</h3>
           <h2 className="text-gray-900 title-font text-lg font-medium">Wear the Code</h2>
           <p className="mt-1">Rs 999</p>
+          <p>S, M, L, XL, XXL</p>
         </div>
       </div>
       </Link>
@@ -122,6 +131,7 @@ const Tshirts = () => {
           <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-Shirts</h3>
           <h2 className="text-gray-900 title-font text-lg font-medium">Wear the Code</h2>
           <p className="mt-1">Rs 999</p>
+          <p>S, M, L, XL, XXL</p>
         </div>
       </div>
       </Link>
@@ -134,6 +144,7 @@ const Tshirts = () => {
           <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-Shirts</h3>
           <h2 className="text-gray-900 title-font text-lg font-medium">Wear the Code</h2>
           <p className="mt-1">Rs 999</p>
+          <p>S, M, L, XL, XXL</p>
         </div>
       </div>
       </Link>
@@ -146,6 +157,7 @@ const Tshirts = () => {
           <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-Shirts</h3>
           <h2 className="text-gray-900 title-font text-lg font-medium">Wear the Code</h2>
           <p className="mt-1">Rs 999</p>
+          <p>S, M, L, XL, XXL</p>
         </div>
       </div>
       </Link>
@@ -158,6 +170,7 @@ const Tshirts = () => {
           <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-Shirts</h3>
           <h2 className="text-gray-900 title-font text-lg font-medium">Wear the Code</h2>
           <p className="mt-1">Rs 999</p>
+          <p>S, M, L, XL, XXL</p>
         </div>
       </div>
       </Link>

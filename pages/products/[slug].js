@@ -4,7 +4,7 @@ const Post = () => {
   const router = useRouter()
   const { slug } = router.query
 
-  return <p>Post: {slug}</p>
+  return <p>The slug is: {slug}</p>
 }
 
 export default Post
