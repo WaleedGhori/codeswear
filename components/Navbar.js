@@ -34,7 +34,7 @@ const Navbar = () => {
       </ul>
     </div>
     <div onClick={togglecart} className="cart  md:absolute md:right-0 md:top-5 md:mx-5">
-    <AiOutlineShoppingCart className='text-pink-600 mt-4 text-xl md:text-3xl md:my-1'/>
+    <AiOutlineShoppingCart className='text-pink-600 mb-2 mt-4 text-xl md:text-3xl md:my-1'/>
     </div>
     <div ref={ref} className="sidecart w-[100%] sm:w-[40%] h-full overflow-y-scroll bg-pink-50 absolute right-0 top-0 px-8 py-10 transform transition-transform translate-x-full z-10">
       <h2 className="font-bold text-xl text-center">Shopping Cart</h2>

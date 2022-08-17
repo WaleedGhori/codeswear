@@ -7,7 +7,7 @@ const Stickers = () => {
      <Link href={'/products/wear-the-code'}>
       <div className="  lg:w-1/5 md:w-1/2 p-4 w-full shadow-md m-4 cursor-pointer ">
         <a className="block relative h-48 rounded overflow-hidden">
-          <img alt="ecommerce" className="m-auto md:mx-0 h-[30vh] md:h-[30vh] block" src="https://images-na.ssl-images-amazon.com/images/I/71sEDpPycPL.__AC_SX300_SY300_QL70_FMwebp_.jpg"/>
+          <img alt="ecommerce" className="m-auto md:mx-0 h-[19vh] md:h-[30vh] block" src="https://images-na.ssl-images-amazon.com/images/I/71sEDpPycPL.__AC_SX300_SY300_QL70_FMwebp_.jpg"/>
         </a>
         <div className="mt-4 text-center md:text-left">
           <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-Shirts</h3>
@@ -20,7 +20,7 @@ const Stickers = () => {
      <Link href={'/products/wear-the-code'}>
       <div className="  lg:w-1/5 md:w-1/2 p-4 w-full shadow-md m-4 cursor-pointer ">
         <a className="block relative h-48 rounded overflow-hidden">
-          <img alt="ecommerce" className="m-auto md:mx-0 h-[30vh] md:h-[30vh] block" src="https://images-na.ssl-images-amazon.com/images/I/71sEDpPycPL.__AC_SX300_SY300_QL70_FMwebp_.jpg"/>
+          <img alt="ecommerce" className="m-auto md:mx-0 h-[19vh] md:h-[30vh] block" src="https://images-na.ssl-images-amazon.com/images/I/71sEDpPycPL.__AC_SX300_SY300_QL70_FMwebp_.jpg"/>
         </a>
         <div className="mt-4 text-center md:text-left">
           <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-Shirts</h3>
@@ -33,7 +33,7 @@ const Stickers = () => {
      <Link href={'/products/wear-the-code'}>
       <div className="  lg:w-1/5 md:w-1/2 p-4 w-full shadow-md m-4 cursor-pointer ">
         <a className="block relative h-48 rounded overflow-hidden">
-          <img alt="ecommerce" className="m-auto md:mx-0 h-[30vh] md:h-[30vh] block" src="https://images-na.ssl-images-amazon.com/images/I/71sEDpPycPL.__AC_SX300_SY300_QL70_FMwebp_.jpg"/>
+          <img alt="ecommerce" className="m-auto md:mx-0 h-[19vh] md:h-[30vh] block" src="https://images-na.ssl-images-amazon.com/images/I/71sEDpPycPL.__AC_SX300_SY300_QL70_FMwebp_.jpg"/>
         </a>
         <div className="mt-4 text-center md:text-left">
           <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-Shirts</h3>
@@ -46,7 +46,7 @@ const Stickers = () => {
      <Link href={'/products/wear-the-code'}>
       <div className="  lg:w-1/5 md:w-1/2 p-4 w-full shadow-md m-4 cursor-pointer ">
         <a className="block relative h-48 rounded overflow-hidden">
-          <img alt="ecommerce" className="m-auto md:mx-0 h-[30vh] md:h-[30vh] block" src="https://images-na.ssl-images-amazon.com/images/I/71sEDpPycPL.__AC_SX300_SY300_QL70_FMwebp_.jpg"/>
+          <img alt="ecommerce" className="m-auto md:mx-0 h-[19vh] md:h-[30vh] block" src="https://images-na.ssl-images-amazon.com/images/I/71sEDpPycPL.__AC_SX300_SY300_QL70_FMwebp_.jpg"/>
         </a>
         <div className="mt-4 text-center md:text-left">
           <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-Shirts</h3>
@@ -59,7 +59,7 @@ const Stickers = () => {
      <Link href={'/products/wear-the-code'}>
       <div className="  lg:w-1/5 md:w-1/2 p-4 w-full shadow-md m-4 cursor-pointer ">
         <a className="block relative h-48 rounded overflow-hidden">
-          <img alt="ecommerce" className="m-auto md:mx-0 h-[30vh] md:h-[30vh] block" src="https://images-na.ssl-images-amazon.com/images/I/71sEDpPycPL.__AC_SX300_SY300_QL70_FMwebp_.jpg"/>
+          <img alt="ecommerce" className="m-auto md:mx-0 h-[19vh] md:h-[30vh] block" src="https://images-na.ssl-images-amazon.com/images/I/71sEDpPycPL.__AC_SX300_SY300_QL70_FMwebp_.jpg"/>
         </a>
         <div className="mt-4 text-center md:text-left">
           <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-Shirts</h3>
@@ -72,7 +72,7 @@ const Stickers = () => {
      <Link href={'/products/wear-the-code'}>
       <div className="  lg:w-1/5 md:w-1/2 p-4 w-full shadow-md m-4 cursor-pointer ">
         <a className="block relative h-48 rounded overflow-hidden">
-          <img alt="ecommerce" className="m-auto md:mx-0 h-[30vh] md:h-[30vh] block" src="https://images-na.ssl-images-amazon.com/images/I/71sEDpPycPL.__AC_SX300_SY300_QL70_FMwebp_.jpg"/>
+          <img alt="ecommerce" className="m-auto md:mx-0 h-[19vh] md:h-[30vh] block" src="https://images-na.ssl-images-amazon.com/images/I/71sEDpPycPL.__AC_SX300_SY300_QL70_FMwebp_.jpg"/>
         </a>
         <div className="mt-4 text-center md:text-left">
           <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-Shirts</h3>
@@ -85,7 +85,7 @@ const Stickers = () => {
      <Link href={'/products/wear-the-code'}>
       <div className="  lg:w-1/5 md:w-1/2 p-4 w-full shadow-md m-4 cursor-pointer ">
         <a className="block relative h-48 rounded overflow-hidden">
-          <img alt="ecommerce" className="m-auto md:mx-0 h-[30vh] md:h-[30vh] block" src="https://images-na.ssl-images-amazon.com/images/I/71sEDpPycPL.__AC_SX300_SY300_QL70_FMwebp_.jpg"/>
+          <img alt="ecommerce" className="m-auto md:mx-0 h-[19vh] md:h-[30vh] block" src="https://images-na.ssl-images-amazon.com/images/I/71sEDpPycPL.__AC_SX300_SY300_QL70_FMwebp_.jpg"/>
         </a>
         <div className="mt-4 text-center md:text-left">
           <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-Shirts</h3>
@@ -98,7 +98,7 @@ const Stickers = () => {
      <Link href={'/products/wear-the-code'}>
       <div className="  lg:w-1/5 md:w-1/2 p-4 w-full shadow-md m-4 cursor-pointer ">
         <a className="block relative h-48 rounded overflow-hidden">
-          <img alt="ecommerce" className="m-auto md:mx-0 h-[30vh] md:h-[30vh] block" src="https://images-na.ssl-images-amazon.com/images/I/71sEDpPycPL.__AC_SX300_SY300_QL70_FMwebp_.jpg"/>
+          <img alt="ecommerce" className="m-auto md:mx-0 h-[19vh] md:h-[30vh] block" src="https://images-na.ssl-images-amazon.com/images/I/71sEDpPycPL.__AC_SX300_SY300_QL70_FMwebp_.jpg"/>
         </a>
         <div className="mt-4 text-center md:text-left">
           <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-Shirts</h3>
@@ -111,7 +111,7 @@ const Stickers = () => {
      <Link href={'/products/wear-the-code'}>
       <div className="  lg:w-1/5 md:w-1/2 p-4 w-full shadow-md m-4 cursor-pointer ">
         <a className="block relative h-48 rounded overflow-hidden">
-          <img alt="ecommerce" className="m-auto md:mx-0 h-[30vh] md:h-[30vh] block" src="https://images-na.ssl-images-amazon.com/images/I/71sEDpPycPL.__AC_SX300_SY300_QL70_FMwebp_.jpg"/>
+          <img alt="ecommerce" className="m-auto md:mx-0 h-[19vh] md:h-[30vh] block" src="https://images-na.ssl-images-amazon.com/images/I/71sEDpPycPL.__AC_SX300_SY300_QL70_FMwebp_.jpg"/>
         </a>
         <div className="mt-4 text-center md:text-left">
           <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-Shirts</h3>
@@ -124,7 +124,7 @@ const Stickers = () => {
      <Link href={'/products/wear-the-code'}>
       <div className="  lg:w-1/5 md:w-1/2 p-4 w-full shadow-md m-4 cursor-pointer ">
         <a className="block relative h-48 rounded overflow-hidden">
-          <img alt="ecommerce" className="m-auto md:mx-0 h-[30vh] md:h-[30vh] block" src="https://images-na.ssl-images-amazon.com/images/I/71sEDpPycPL.__AC_SX300_SY300_QL70_FMwebp_.jpg"/>
+          <img alt="ecommerce" className="m-auto md:mx-0 h-[19vh] md:h-[30vh] block" src="https://images-na.ssl-images-amazon.com/images/I/71sEDpPycPL.__AC_SX300_SY300_QL70_FMwebp_.jpg"/>
         </a>
         <div className="mt-4 text-center md:text-left">
           <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-Shirts</h3>
@@ -137,7 +137,7 @@ const Stickers = () => {
      <Link href={'/products/wear-the-code'}>
       <div className="  lg:w-1/5 md:w-1/2 p-4 w-full shadow-md m-4 cursor-pointer ">
         <a className="block relative h-48 rounded overflow-hidden">
-          <img alt="ecommerce" className="m-auto md:mx-0 h-[30vh] md:h-[30vh] block" src="https://images-na.ssl-images-amazon.com/images/I/71sEDpPycPL.__AC_SX300_SY300_QL70_FMwebp_.jpg"/>
+          <img alt="ecommerce" className="m-auto md:mx-0 h-[19vh] md:h-[30vh] block" src="https://images-na.ssl-images-amazon.com/images/I/71sEDpPycPL.__AC_SX300_SY300_QL70_FMwebp_.jpg"/>
         </a>
         <div className="mt-4 text-center md:text-left">
           <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-Shirts</h3>
@@ -150,7 +150,7 @@ const Stickers = () => {
      <Link href={'/products/wear-the-code'}>
       <div className="  lg:w-1/5 md:w-1/2 p-4 w-full shadow-md m-4 cursor-pointer ">
         <a className="block relative h-48 rounded overflow-hidden">
-          <img alt="ecommerce" className="m-auto md:mx-0 h-[30vh] md:h-[30vh] block" src="https://images-na.ssl-images-amazon.com/images/I/71sEDpPycPL.__AC_SX300_SY300_QL70_FMwebp_.jpg"/>
+          <img alt="ecommerce" className="m-auto md:mx-0 h-[19vh] md:h-[30vh] block" src="https://images-na.ssl-images-amazon.com/images/I/71sEDpPycPL.__AC_SX300_SY300_QL70_FMwebp_.jpg"/>
         </a>
         <div className="mt-4 text-center md:text-left">
           <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-Shirts</h3>
@@ -163,7 +163,7 @@ const Stickers = () => {
      <Link href={'/products/wear-the-code'}>
       <div className="  lg:w-1/5 md:w-1/2 p-4 w-full shadow-md m-4 cursor-pointer ">
         <a className="block relative h-48 rounded overflow-hidden">
-          <img alt="ecommerce" className="m-auto md:mx-0 h-[30vh] md:h-[30vh] block" src="https://images-na.ssl-images-amazon.com/images/I/71sEDpPycPL.__AC_SX300_SY300_QL70_FMwebp_.jpg"/>
+          <img alt="ecommerce" className="m-auto md:mx-0 h-[19vh] md:h-[30vh] block" src="https://images-na.ssl-images-amazon.com/images/I/71sEDpPycPL.__AC_SX300_SY300_QL70_FMwebp_.jpg"/>
         </a>
         <div className="mt-4 text-center md:text-left">
           <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">T-Shirts</h3>
