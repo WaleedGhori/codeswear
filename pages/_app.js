@@ -11,12 +11,15 @@ useEffect(() => {
     try {
       if(localStorage.getItem("cart")){
         setCart(JSON.parse(localStorage.getItem("cart")))
+        saveCart(JSON.parse(localStorage.getItem("cart")))
+
       }
     } catch (error) {
       console.error(error)
       localStorage.clear()
      
     }
+
 }, []);
 
 
@@ -65,7 +68,7 @@ useEffect(() => {
   }
     return(
   <>
-  <Navbar cart={cart} clearCart={clearCart} removeToCart={removeToCart} addToCart={addToCart} saveCart={saveCart} subtotal={subtotal}/>
+  <Navbar key={subtotal} cart={cart} clearCart={clearCart} removeToCart={removeToCart} addToCart={addToCart} saveCart={saveCart} subtotal={subtotal}/>
   <Component cart={cart} clearCart={clearCart} removeToCart={removeToCart} addToCart={addToCart} saveCart={saveCart} subtotal={subtotal} {...pageProps} />
   <Footer/>
   </>
