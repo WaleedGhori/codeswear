@@ -33,7 +33,7 @@ const Login = () => {
         </div>
 
         <div className="text-sm">
-          <Link href={'/forget'}><a href="#" className="font-medium text-pink-600 hover:text-pink-500"> Forgot your password? </a></Link>
+          <Link href={'/forgot'}><a href="#" className="font-medium text-pink-600 hover:text-pink-500"> Forgot your password? </a></Link>
         </div>
       </div>
 
