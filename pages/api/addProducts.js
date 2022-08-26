@@ -8,13 +8,14 @@ let  handler =  async(req , res)=>{
         console.log(req.body);
         for(let i = 0; i<req.body.length; i++){
             let p = new Product({
-                tilte:req.body[i].tilte,
+                title:req.body[i].title,
                 slug:req.body[i].slug, 
                 desc:req.body[i].desc,
                 img:req.body[i].img,
+                color:req.body[i].color,
                 size:req.body[i].size,
                 category:req.body[i].category,
-                Price:req.body[i].Price,
+                price:req.body[i].price,
                 availableQty:req.body[i].availableQty,
             })
             await p.save();

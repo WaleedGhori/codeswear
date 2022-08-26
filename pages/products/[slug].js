@@ -1,11 +1,15 @@
 import { useRouter } from 'next/router'
 import {useState} from "react";
+import Product from '../../models/Product';
+import mongoose from 'mongoose';
 
-
-const Post = ({addToCart}) => {
+const Post = ({addToCart , product ,variant}) => {
+  console.log(product , variant);
   const router = useRouter()
   const [pin, setPin] = useState();
   const [service, setService] = useState();
+  const [color, setColor] = useState(product.color);
+  const [size, setSize] = useState(product.size);
   
   const { slug } = router.query
   const checkservice= async()=>{
@@ -71,9 +75,12 @@ const Post = ({addToCart}) => {
         <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
           <div className="flex">
             <span className="mr-3">Color</span>
-            <button className="border-2 border-gray-300 rounded-full w-6 h-6 focus:outline-none"></button>
-            <button className="border-2 border-gray-300 ml-1 bg-gray-700 rounded-full w-6 h-6 focus:outline-none"></button>
-            <button className="border-2 border-gray-300 ml-1 bg-pink-500 rounded-full w-6 h-6 focus:outline-none"></button>
+            {Object.keys(variant).includes('blue') && Object.keys(variant['blue']).includes(size) && <button className={`border-2 ${color==='blue'?'border-black': 'border-gray-300'} ml-1 bg-blue-700 rounded-full w-6 h-6 focus:outline-none`}></button>}
+            {Object.keys(variant).includes('red') && Object.keys(variant['red']).includes(size) && <button className={`border-2 ${color==='red'?'border-black': 'border-gray-300'} ml-1 bg-red-700 rounded-full w-6 h-6 focus:outline-none`}></button>}
+            {Object.keys(variant).includes('green') && Object.keys(variant['green']).includes(size) && <button className={`border-2 ${color==='green'?'border-black': 'border-gray-300'} ml-1 bg-green-700 rounded-full w-6 h-6 focus:outline-none`}></button>}
+            {Object.keys(variant).includes('yellow') && Object.keys(variant['yellow']).includes(size) && <button className={`border-2 ${color==='yellow'?'border-black': 'border-gray-300'} ml-1 bg-yellow-700 rounded-full w-6 h-6 focus:outline-none`}></button>}
+            {Object.keys(variant).includes('purple') && Object.keys(variant['purple']).includes(size) && <button className={`border-2 ${color==='purple'?'border-black': 'border-gray-300'} ml-1 bg-purple-700 rounded-full w-6 h-6 focus:outline-none`}></button>}
+            {Object.keys(variant).includes('sky blue') && Object.keys(variant['sky blue']).includes(size) && <button className={`border-2 ${color==='sky blue'?'border-black': 'border-gray-300'} ml-1 bg-cyan-500 rounded-full w-6 h-6 focus:outline-none`}></button>}
           </div>
           <div className="flex ml-4 items-center">
             <span className="mr-2">Size</span>
@@ -117,6 +124,27 @@ const Post = ({addToCart}) => {
   </div>
 </section>
   </>
+}
+export async function getServerSideProps(context) {
+  if(!mongoose.connections[0].readyState){
+    await mongoose.connect(process.env.MONGO_URI)
+}
+  let product = await Product.findOne({slug:context.query.slug}) 
+  let variant = await Product.find({title:product.title})
+  let colorSizeSlug = {}
+  for(let item of variant){
+    if(Object.keys(colorSizeSlug).includes(item.color)){
+      colorSizeSlug[item.color][item.size] ={slug:item.slug}
+    }
+    else{
+      colorSizeSlug[item.color] = {}
+      colorSizeSlug[item.color][item.size] ={slug:item.slug}
+    }
+  }
+   
+  return {
+    props: {product:JSON.parse(JSON.stringify(product)) ,variant:JSON.parse(JSON.stringify(colorSizeSlug)) }, // will be passed to the page component as props
+  }
 }
 
 export default Post
