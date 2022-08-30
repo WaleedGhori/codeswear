@@ -13,7 +13,6 @@ const Post = ({addToCart , product ,variant}) => {
   
   const { slug } = router.query
   const checkservice= async()=>{
-    console.log("This is a beautifull ");
     let pins = await fetch(`http://localhost:3000/api/pincode`);
     let pincode = await pins.json();
     if(pincode.includes(parseInt(pin))){
@@ -25,6 +24,10 @@ const Post = ({addToCart , product ,variant}) => {
   }
   const onchangePin = (e)=>{
     setPin(e.target.value)
+  }
+  const refrehvariant = (newsize , newcolor)=>{
+    let url = `http://localhost:3000/products/${variant[newcolor][newsize]['slug']}`
+    window.location =url;
   }
   return <>
   <section className="text-gray-600 body-font overflow-hidden">
@@ -75,21 +78,23 @@ const Post = ({addToCart , product ,variant}) => {
         <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
           <div className="flex">
             <span className="mr-3">Color</span>
-            {Object.keys(variant).includes('blue') && Object.keys(variant['blue']).includes(size) && <button className={`border-2 ${color==='blue'?'border-black': 'border-gray-300'} ml-1 bg-blue-700 rounded-full w-6 h-6 focus:outline-none`}></button>}
-            {Object.keys(variant).includes('red') && Object.keys(variant['red']).includes(size) && <button className={`border-2 ${color==='red'?'border-black': 'border-gray-300'} ml-1 bg-red-700 rounded-full w-6 h-6 focus:outline-none`}></button>}
-            {Object.keys(variant).includes('green') && Object.keys(variant['green']).includes(size) && <button className={`border-2 ${color==='green'?'border-black': 'border-gray-300'} ml-1 bg-green-700 rounded-full w-6 h-6 focus:outline-none`}></button>}
-            {Object.keys(variant).includes('yellow') && Object.keys(variant['yellow']).includes(size) && <button className={`border-2 ${color==='yellow'?'border-black': 'border-gray-300'} ml-1 bg-yellow-700 rounded-full w-6 h-6 focus:outline-none`}></button>}
-            {Object.keys(variant).includes('purple') && Object.keys(variant['purple']).includes(size) && <button className={`border-2 ${color==='purple'?'border-black': 'border-gray-300'} ml-1 bg-purple-700 rounded-full w-6 h-6 focus:outline-none`}></button>}
-            {Object.keys(variant).includes('sky blue') && Object.keys(variant['sky blue']).includes(size) && <button className={`border-2 ${color==='sky blue'?'border-black': 'border-gray-300'} ml-1 bg-cyan-500 rounded-full w-6 h-6 focus:outline-none`}></button>}
+            {Object.keys(variant).includes('blue') && Object.keys(variant['blue']).includes(size) && <button onClick={()=>{refrehvariant(size, 'blue')}} className={`border-2 ${color==='blue'?'border-black': 'border-gray-300'} ml-1 bg-blue-700 rounded-full w-6 h-6 focus:outline-none`}></button>}
+            {Object.keys(variant).includes('red') && Object.keys(variant['red']).includes(size) && <button onClick={()=>{refrehvariant(size, 'red')}} className={`border-2 ${color==='red'?'border-black': 'border-gray-300'} ml-1 bg-red-700 rounded-full w-6 h-6 focus:outline-none`}></button>}
+            {Object.keys(variant).includes('green') && Object.keys(variant['green']).includes(size) && <button onClick={()=>{refrehvariant(size, 'green')}} className={`border-2 ${color==='green'?'border-black': 'border-gray-300'} ml-1 bg-green-700 rounded-full w-6 h-6 focus:outline-none`}></button>}
+            {Object.keys(variant).includes('yellow') && Object.keys(variant['yellow']).includes(size) && <button onClick={()=>{refrehvariant(size, 'yellow')}} className={`border-2 ${color==='yellow'?'border-black': 'border-gray-300'} ml-1 bg-yellow-700 rounded-full w-6 h-6 focus:outline-none`}></button>}
+            {Object.keys(variant).includes('purple') && Object.keys(variant['purple']).includes(size) && <button onClick={()=>{refrehvariant(size, 'purple')}} className={`border-2 ${color==='purple'?'border-black': 'border-gray-300'} ml-1 bg-purple-700 rounded-full w-6 h-6 focus:outline-none`}></button>}
+            {Object.keys(variant).includes('sky blue') && Object.keys(variant['sky blue']).includes(size) && <button onClick={()=>{refrehvariant(size, 'sky blue')}} className={`border-2 ${color==='sky blue'?'border-black': 'border-gray-300'} ml-1 bg-cyan-500 rounded-full w-6 h-6 focus:outline-none`}></button>}
           </div>
           <div className="flex ml-4 items-center">
             <span className="mr-2">Size</span>
             <div className="relative">
-              <select className="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-pink-200 focus:border-pink-500 text-base pl-3 pr-10">
-                <option>SM</option>
-                <option>M</option>
-                <option>L</option>
-                <option>XL</option>
+              <select value={size} onChange={(e)=>{refrehvariant(e.target.value , color)}} className="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-pink-200 focus:border-pink-500 text-base pl-3 pr-10">
+              {Object.keys(variant[color]).includes('S') && <option value={'S'}>S</option>}
+              {Object.keys(variant[color]).includes('M') && <option value={'M'}>M</option>}
+              {Object.keys(variant[color]).includes('L') && <option value={'L'}>L</option>}
+              {Object.keys(variant[color]).includes('XL') && <option value={'XL'}>XL</option>}
+              {Object.keys(variant[color]).includes('XXL') && <option value={'XXL'}>XXL</option>}
+
               </select>
               <span className="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
                 <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4" viewBox="0 0 24 24">
@@ -141,7 +146,7 @@ export async function getServerSideProps(context) {
       colorSizeSlug[item.color][item.size] ={slug:item.slug}
     }
   }
-   
+
   return {
     props: {product:JSON.parse(JSON.stringify(product)) ,variant:JSON.parse(JSON.stringify(colorSizeSlug)) }, // will be passed to the page component as props
   }
