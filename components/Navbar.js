@@ -28,10 +28,10 @@ const Navbar = ({cart, subtotal , addToCart , removeToCart , clearCart}) => {
     </div>
     <div className="nav">
       <ul className="flex item-center md:space-x-4 space-x-3 font-bold md:text-md">
-        <Link href={'/tshirts'}><a><li>T-Shirts</li></a></Link>
-        <Link href={'/hoddies'}><a><li>Hoddies</li></a></Link>
-        <Link href={'/stickers'}><a><li>Stickers</li></a></Link>
-        <Link href={'/mugs'}><a><li>Mugs</li></a></Link>
+        <Link href={'/tshirts'}><a><li className="hover:text-pink-700">T-Shirts</li></a></Link>
+        <Link href={'/hoddies'}><a><li className="hover:text-pink-700">Hoddies</li></a></Link>
+        <Link href={'/stickers'}><a><li className="hover:text-pink-700">Stickers</li></a></Link>
+        <Link href={'/mugs'}><a><li className="hover:text-pink-700">Mugs</li></a></Link>
       </ul>
     </div>
     <div  className="cart flex md:absolute md:right-0 md:top-5 md:mx-5">
@@ -45,8 +45,8 @@ const Navbar = ({cart, subtotal , addToCart , removeToCart , clearCart}) => {
         {Object.keys(cart).length === 0 && <div className="my-4 font-normal">You Cart is empty!</div>}
         {Object.keys(cart).map((k)=>{return<li key={k}>
           <div className="item flex my-3">
-          <div className="w-2/3 font-semibold">{cart[k].name}</div>
-          <div className="flex items-center justify-center w-1/3 text-lg"><AiFillMinusCircle onClick={()=>{removeToCart(k ,1, cart[k].price , cart[k].name , cart[k].size, cart[k].variant )}} className="cursor-pointer  text-pink-500"/><span className="mx-2">{cart[k].qty}</span><AiFillPlusCircle onClick={()=>{addToCart(k ,1, cart[k].price , cart[k].name , cart[k].size, cart[k].variant )}} className="cursor-pointer  text-pink-500"/></div>
+          <div className="w-2/3 font-semibold">{cart[k].name} ({cart[k].variant}/{cart[k].size})</div>
+          <div className="flex items-center justify-center w-1/3 text-lg"><AiFillMinusCircle onClick={()=>{removeToCart(k ,1, cart[k].price,cart[k].name , cart[k].size, cart[k].variant )}} className="cursor-pointer  text-pink-500"/><span className="mx-2">{cart[k].qty}</span><AiFillPlusCircle onClick={()=>{addToCart(k ,1, cart[k].price , cart[k].name , cart[k].size, cart[k].variant )}} className="cursor-pointer  text-pink-500"/></div>
           </div>
         </li>
         })}
