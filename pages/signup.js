@@ -1,13 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useRouter } from "next/router";
 var CryptoJS = require("crypto-js");
+
 const Signup = () => {
   const [name, setName] = useState();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const router = useRouter();
   
+  useEffect(() => {
+    if(localStorage.getItem('token')){
+      router.push('/')
+    }
+  }, []);
+
   const handleSubmit = async(e)=>{
     e.preventDefault();
     const data = {name, email , password}
@@ -52,7 +61,7 @@ const Signup = () => {
   <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
   <div className="max-w-md w-full space-y-8">
     <div>
-      <img className="mx-auto h-12 w-auto" src="codeswear.webp" alt="Workflow"/>
+      <img className="mx-auto h-12 w-auto" src="codehead.png" alt="Workflow"/>
       <h2 className="mt-6 text-center text-3xl tracking-tight font-bold text-gray-900">Sign up for an account</h2>
       <p className="mt-2 text-center text-sm text-gray-600">
         Or

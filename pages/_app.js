@@ -1,15 +1,27 @@
-import { useRouter } from 'next/router';
+/* eslint-disable react-hooks/exhaustive-deps */
+import Router, { useRouter } from 'next/router';
 import { useState , useEffect } from 'react'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import '../styles/globals.css'
+import LoadingBar from 'react-top-loading-bar'
 
 function MyApp({ Component, pageProps }) {
   const [cart , setCart] = useState({});
   const [subtotal, setSubtotal] = useState(0);
+  const [user, setUser] = useState({value:null});
+  const [key, setKey] = useState(0);
+  const [progress, setProgress] = useState(0)
   const router =useRouter()
-useEffect(() => {
-    console.log("Yah iam runnig useEffect in _app.js");
+
+  useEffect(() => {
+  router.events.on('routeChangeStart' , ()=>{
+    setProgress(40)
+  })
+  router.events.on('routeChangeComplete' , ()=>{
+    setProgress(100)
+  })
+
     try {
       if(localStorage.getItem("cart")){
         setCart(JSON.parse(localStorage.getItem("cart")))
@@ -21,8 +33,22 @@ useEffect(() => {
       localStorage.clear()
      
     }
+    const token = localStorage.getItem('token');
+    if(token){
+      setUser({value:token})
+      setKey(Math.random())
+    }
 
-}, []);
+}, [router.query]);
+
+// logout from account
+const logout = () =>{
+ localStorage.removeItem('token')
+ setUser({value:null})
+ setKey(Math.random())
+ router.push('/')
+} 
+
 
 
 // save the cart into localstorage with the help of Object.keys method and also apply the foor loop and here we also calculate the subtotal of all total ammount 
@@ -67,8 +93,8 @@ useEffect(() => {
 
   const buyNow =(itemcode , qty , price , name ,  size , variant)=>{
     let newCart = {itemcode: {qty:1 , price ,name ,  size , variant}}
-    setCart(newCart);
     saveCart(newCart);
+    setCart(newCart);
     router.push('/checkout')
   }
 
@@ -79,7 +105,13 @@ useEffect(() => {
   }
     return(
   <>
-  <Navbar buyNow={buyNow} key={subtotal} cart={cart} clearCart={clearCart} removeToCart={removeToCart} addToCart={addToCart} saveCart={saveCart} subtotal={subtotal}/>
+  <LoadingBar
+        color='#EC427A'
+        progress={progress}
+        waitingTime={400}
+        onLoaderFinished={() => setProgress(0)}
+      />
+  <Navbar logout={logout} user={user} buyNow={buyNow} key={key} cart={cart} clearCart={clearCart} removeToCart={removeToCart} addToCart={addToCart} saveCart={saveCart} subtotal={subtotal}/>
   <Component buyNow={buyNow} cart={cart} clearCart={clearCart} removeToCart={removeToCart} addToCart={addToCart} saveCart={saveCart} subtotal={subtotal} {...pageProps} />
   <Footer/>
   </>
