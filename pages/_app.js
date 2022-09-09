@@ -10,7 +10,7 @@ function MyApp({ Component, pageProps }) {
   const [cart , setCart] = useState({});
   const [subtotal, setSubtotal] = useState(0);
   const [user, setUser] = useState({value:null});
-  const [key, setKey] = useState(0);
+  const [key, setKey] = useState();
   const [progress, setProgress] = useState(0)
   const router =useRouter()
 
@@ -111,7 +111,7 @@ const logout = () =>{
         waitingTime={400}
         onLoaderFinished={() => setProgress(0)}
       />
-  <Navbar logout={logout} user={user} buyNow={buyNow} key={key} cart={cart} clearCart={clearCart} removeToCart={removeToCart} addToCart={addToCart} saveCart={saveCart} subtotal={subtotal}/>
+  {key &&<Navbar logout={logout} user={user} buyNow={buyNow} key={key} cart={cart} clearCart={clearCart} removeToCart={removeToCart} addToCart={addToCart} saveCart={saveCart} subtotal={subtotal}/>}
   <Component buyNow={buyNow} cart={cart} clearCart={clearCart} removeToCart={removeToCart} addToCart={addToCart} saveCart={saveCart} subtotal={subtotal} {...pageProps} />
   <Footer/>
   </>

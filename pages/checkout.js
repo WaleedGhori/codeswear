@@ -1,10 +1,56 @@
 import { AiOutlineShoppingCart, AiFillCloseCircle, AiFillPlusCircle, AiFillMinusCircle } from 'react-icons/ai';
 import Link from "next/link";
 import { BsFillBagCheckFill } from 'react-icons/bs';
-
+import Head from 'next/head';
+import Script from 'next/script';
 
 const Checkout = ({ cart, addToCart, removeToCart, subtotal }) => {
+
+    const intiaitePayment = async () => {
+        let oid = Math.floor(Math.random()*Date.now());
+        const data = {cart , subtotal , oid , email:"email"};
+        let a = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/pretransiction`, {
+            method: 'POST', // or 'PUT'
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        })
+
+        let txnRes= await a.json();
+        console.log(txnRes);
+        let txnToken = txnRes.txnToken
+
+        var config = {
+            "root": "",
+            "flow": "DEFAULT",
+            "data": {
+                "orderId": oid, /* update order id  */
+                "token": txnToken, /* update token value */
+                "tokenType": "TXN_TOKEN",
+                "amount": subtotal /* update amount */
+            },
+            "handler": {
+                "notifyMerchant": function (eventName, data) {
+                    console.log("notifyMerchant handler function called");
+                    console.log("eventName => ", eventName);
+                    console.log("data => ", data);
+                }
+            }
+        };
+
+        window.Paytm.CheckoutJS.init(config).then(function onSuccess() {
+            // after successfully updating configuration, invoke JS Checkout
+            window.Paytm.CheckoutJS.invoke();
+        }).catch(function onError(error) {
+            console.log("error => ", error);
+        });
+    }
     return <div className="container px-2 sm:mx-auto ">
+        <Head><meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0" />
+        </Head>
+        <Script type="application/javascript" src={`${process.env.NEXT_PUBLIC_PAYTM_HOST}/merchantpgpui/checkoutjs/merchants/${process.env_NEXT_PUBLIC_PAYTM_MID}.js `} crossorigin="anonymous" />
+        <script></script>
         <h1 className="font-bold text-3xl my-8 text-center"> CheckOut</h1>
         <h1 className="font-semibold text-xl">1. Delivery Details</h1>
         <div className="mx-auto flex">
@@ -56,9 +102,9 @@ const Checkout = ({ cart, addToCart, removeToCart, subtotal }) => {
             </div>
         </div>
         <h1 className="font-semibold text-xl">2. Review Cart Items</h1>
-        <div  className="sidecart w-[100%]  bg-pink-50 p-6 m-4 z-10">
-            
-            <span  className="absolute text-pink-500 top-4 cursor-pointer text-2xl right-2"><AiFillCloseCircle /></span>
+        <div className="sidecart w-[100%]  bg-pink-50 p-6 m-4 z-10">
+
+            <span className="absolute text-pink-500 top-4 cursor-pointer text-2xl right-2"><AiFillCloseCircle /></span>
             <ol className="list-decimal font-semibold">
                 {Object.keys(cart).length === 0 && <div className="my-4 font-normal">You Cart is empty!</div>}
                 {Object.keys(cart).map((k) => {
@@ -70,10 +116,10 @@ const Checkout = ({ cart, addToCart, removeToCart, subtotal }) => {
                     </li>
                 })}
             </ol>
-                <span className='font-bold'>Subtotal Rs: {subtotal}</span>
+            <span className='font-bold'>Subtotal Rs: {subtotal}</span>
         </div>
         <div className='mx-4'>
-        <Link href={'/checkout'}><button className="flex mx-2 text-white bg-pink-500 border-0 py-2 px-2 focus:outline-none hover:bg-pink-400 rounded text-sm">PayNow! {subtotal}</button></Link>
+            <Link href={'/checkout'}><button onClick={intiaitePayment} className="flex mx-2 text-white bg-pink-500 border-0 py-2 px-2 focus:outline-none hover:bg-pink-400 rounded text-sm">PayNow! {subtotal}</button></Link>
         </div>
 
     </div>;

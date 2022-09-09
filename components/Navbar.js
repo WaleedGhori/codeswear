@@ -40,7 +40,7 @@ const cartref = useRef();
       </ul>
     </div>
     <div  className="cart my-3 md:m-auto items-center flex md:absolute md:right-0 md:top-5 md:mx-5">
-    <a onMouseOver={()=>setDropDown(true)} onMouseLeave={()=>setDropDown(false)}>
+    <span onMouseOver={()=>setDropDown(true)} onMouseLeave={()=>setDropDown(false)}>
       {dropDown &&  
       <div onMouseOver={()=>setDropDown(true)} onMouseLeave={()=>setDropDown(false)} className="absolute right-8 py-4 bg-pink-50 shadow-lg top-8 rounded-md px-5 w-36">
         <ul>
@@ -50,7 +50,7 @@ const cartref = useRef();
         </ul>
       </div>}
     {user.value && <MdAccountCircle  className='text-pink-600 cursor-pointer mb-2 text-xl md:text-3xl md:my-1 mx-4'/>}
-      </a>
+      </span>
     {!user.value && <Link href={'/login'}>
       <a><button className="bg-pink-600 px-3 py-1 rounded-md text-md text-white mx-4  ">Login</button></a>
     </Link>}
