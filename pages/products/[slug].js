@@ -6,7 +6,6 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Post = ({ addToCart, product, variant, buyNow }) => {
-  console.log(product, variant);
   const router = useRouter()
   const [pin, setPin] = useState();
   const [service, setService] = useState();

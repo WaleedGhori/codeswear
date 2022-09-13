@@ -61,7 +61,7 @@ let checksum = await PaytmChecksum.generateSignature(JSON.stringify(paytmParams.
             });
     
             post_res.on('end', function(){
-                console.log('Response: ', response);
+                // console.log('Response: ', response);
                 resolve(JSON.parse(response).body)
             });
         });
