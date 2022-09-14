@@ -3,11 +3,12 @@ import mongoose from "mongoose";
 import Product from "../models/Product";
 
 const Tshirts = ({products}) => {
-  // console.log(products);
+  console.log("This is a good product",products);
   return <div>
   <section className="text-gray-600 body-font">
     <div className="container px-5 py-24 mx-auto">
      <div className="flex flex-wrap -m-4 justify-center"> {/*md:ml-24*/}
+     {Object.keys(products).length ===0 && <p className="font-bold">Sorry all the tshirts are currently out of stock, New stock will be comming soon....</p>}
      {Object.keys(products).map((item)=>{
      return <Link passHref={true} key={products[item]._id} href={`/products/${products[item].slug}`}>
       <div className="  lg:w-1/5 md:w-1/2 p-4 w-full shadow-md m-4 cursor-pointer ">

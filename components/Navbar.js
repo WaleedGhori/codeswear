@@ -58,6 +58,7 @@ const cartref = useRef();
     </div> 
     <div ref={cartref} className={`sidecart w-[100%] sm:w-[40%] h-[75vh] md:h-[100vh] overflow-y-scroll bg-pink-50 absolute right-0 top-0 px-8 py-10 transform transition-transform translate-x-full z-10`}>
     {/* ${Object.keys(cart).length !==0  ?'translate-x-0':'translate-x-full'} */}
+    
       <h2 className="font-bold text-xl text-center">Shopping Cart</h2>
       <span onClick={togglecart} className="absolute text-pink-500 top-4 cursor-pointer text-2xl right-2"><AiFillCloseCircle/></span>
       <ol className="list-decimal font-semibold">

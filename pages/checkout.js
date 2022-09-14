@@ -46,16 +46,21 @@ const handleChange = (e)=>{
   
 }
 
-    // const intiaitePayment = async () => {
-    //     let oid = Math.floor(Math.random()*Date.now());
-    //     const data = {cart , subtotal , oid , email:"email"};
-    //     let a = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/pretransiction`, {
-    //         method: 'POST', // or 'PUT'
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //         body: JSON.stringify(data),
-    //     })
+    const intiaitePayment = async () => {
+        let oid = Math.floor(Math.random()*Date.now());
+        const data = {cart , subtotal , oid , email , pincode , name ,address ,phone};
+        let a = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/pretransiction`, {
+            method: 'POST', // or 'PUT'
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+            
+        })
+        // let response = await a.json();
+        // console.log(response);
+
+    }   
 
     //     let txnRes= await a.json();
     //     let txnToken = txnRes.txnToken
@@ -158,7 +163,7 @@ const handleChange = (e)=>{
             <span className='font-bold'>Subtotal Rs: {subtotal}</span>
         </div>
         <div className='mx-4'>
-            <Link href={'/checkout'}><button disabled={disabled} className="disabled:bg-pink-300 flex mx-2 text-white bg-pink-500 border-0 py-2 px-2 focus:outline-none hover:bg-pink-400 rounded text-sm">PayNow! {subtotal}</button></Link>
+            <Link href={'/checkout'}><button onClick={intiaitePayment} disabled={disabled} className="disabled:bg-pink-300 flex mx-2 text-white bg-pink-500 border-0 py-2 px-2 focus:outline-none hover:bg-pink-400 rounded text-sm">PayNow! {subtotal}</button></Link>
         </div>
 
     </div>;
