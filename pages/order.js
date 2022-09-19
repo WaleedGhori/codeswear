@@ -1,4 +1,12 @@
-const Order = () => {
+import { useRouter } from "next/router";
+import mongoose from 'mongoose';
+import Order from "../models/Order";
+
+const MyOrder = (order) => {
+  // const router = useRouter()
+  // const {id} = router.query
+  
+  console.log(order);
   return <div>
     <section className="text-gray-600 body-font overflow-hidden">
   <div className="container px-5 py-24 mx-auto">
@@ -40,4 +48,13 @@ const Order = () => {
 </section>
   </div>;
 };
-export default Order;
+export async function getServerSideProps(context) {
+  if (!mongoose.connections[0].readyState) {
+    await mongoose.connect(process.env.MONGO_URI)
+  }
+  let order = await Order.findById(context.query._id)
+  return {
+    props: { order: JSON.parse(JSON.stringify(order))}, // will be passed to the page component as props
+  }
+}
+export default MyOrder;

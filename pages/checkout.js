@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { BsFillBagCheckFill } from 'react-icons/bs';
 import Head from 'next/head';
 import Script from 'next/script';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Checkout = ({ cart, addToCart, removeToCart, subtotal }) => {
 const [name, setName] = useState('');
@@ -47,6 +49,15 @@ const handleChange = (e)=>{
 }
 
     const intiaitePayment = async () => {
+        toast.success('Payment Intiaite Successfully', {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });
         let oid = Math.floor(Math.random()*Date.now());
         const data = {cart , subtotal , oid , email , pincode , name ,address ,phone};
         let a = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/pretransiction`, {
@@ -54,9 +65,9 @@ const handleChange = (e)=>{
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(data),
-            
+            body: JSON.stringify(data)         
         })
+
         // let response = await a.json();
         // console.log(response);
 
@@ -91,9 +102,11 @@ const handleChange = (e)=>{
     //     });
     // }
     return <div className="container px-2 sm:mx-auto ">
+    <ToastContainer/>
+
         {/* <Head><meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0" />
         </Head>
-        <Script type="application/javascript" src={`${process.env.NEXT_PUBLIC_PAYTM_HOST}/merchantpgpui/checkoutjs/merchants/${process.env_NEXT_PUBLIC_PAYTM_MID}.js `} crossorigin="anonymous" /> */}
+        <Script type="application/javascript" src={`${process.env.NEXT_PUBLIC_HOST}/merchantpgpui/checkoutjs/merchants/${process.env_NEXT_PUBLIC_PAYTM_MID}.js `} crossorigin="anonymous" /> */}
 
         <h1 className="font-bold text-3xl my-8 text-center"> CheckOut</h1>
         <h1 className="font-semibold text-xl">1. Delivery Details</h1>

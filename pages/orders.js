@@ -16,53 +16,53 @@ const Orders = () => {
     }
   }, []);
   return <div>
-        <h1 className="font-semibold text-center p-8 text-2xl">My Orders</h1>
+    <h1 className="font-semibold text-center p-8 text-2xl">My Orders</h1>
     <div className="container mx-auto">
         <div className="flex flex-col">
-            <div className="overflow-x-auto sm:mx-6 lg:mx-8">
-                <div className="py-2 inline-block min-w-full sm:px-6 lg-px-8">
-                    <div className="overflow-hidden">
-                        <table className="min-w-full">
-                            <thead className="border-b">
-                            <tr>
-                                    <th scope="col" className="text-sm font-medium px-6 py-4 text-left text-gray-900">
-                                        #
-                                    </th>
-                                    <th scope="col" className="text-sm font-medium px-6 py-4 text-left text-gray-900">
-                                        first
-                                    </th>
-                                    <th scope="col" className="text-sm font-medium px-6 py-4 text-left text-gray-900">
-                                        Second
-                                    </th>
-                                    <th scope="col" className="text-sm font-medium px-6 py-4 text-left text-gray-900">
-                                        Third
-                                    </th>
-                                </tr>
+          <div className="overflow-x-auto sm:mx-6 lg:mx-8">
+            <div className="py-2 inline-block min-w-full sm:px-6 lg-px-8">
+              <div className="overflow-hidden">
+                <table className="min-w-full">
+                  <thead className="border-b">
+                    <tr>
+                    <th scope="col" className="text-sm font-medium px-6 py-4 text-left text-gray-900">
+                      #
+                    </th>
+                    <th scope="col" className="text-sm font-medium px-6 py-4 text-left text-gray-900">
+                      first
+                    </th>
+                    <th scope="col" className="text-sm font-medium px-6 py-4 text-left text-gray-900">
+                      Second
+                    </th>
+                    <th scope="col" className="text-sm font-medium px-6 py-4 text-left text-gray-900">
+                      Third
+                    </th>
+                    </tr>
                             
-                            </thead>
-                            <tbody>
-                                <tr className='bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100 '>
-                                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">1</td>
-                                <td className="px-6 py-4 whitespace-nowrap text-sm font-light text-gray-900">Larry</td>
-                                <td className="px-6 py-4 whitespace-nowrap text-sm font-light text-gray-900">Wild</td>
-                                <td className="px-6 py-4 whitespace-nowrap text-sm font-light text-gray-900">@twitter</td>
-                                </tr>
-                                <tr  className='bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100 '>
-                                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">2</td>
-                                <td className="px-6 py-4 whitespace-nowrap text-sm font-light text-gray-900">Larry</td>
-                                <td className="px-6 py-4 whitespace-nowrap text-sm font-light text-gray-900">Wild</td>
-                                <td className="px-6 py-4 whitespace-nowrap text-sm font-light text-gray-900">@twitter</td>
-                                </tr>
-                                <tr  className='bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100 '>
-                                <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">3</td>
-                                <td className="px-6 py-4 whitespace-nowrap text-sm font-light text-gray-900">Larry</td>
-                                <td className="px-6 py-4 whitespace-nowrap text-sm font-light text-gray-900">Wild</td>
-                                <td className="px-6 py-4 whitespace-nowrap text-sm font-light text-gray-900">@twitter</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                  </thead>
+                  <tbody>
+                    <tr className='bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100 '>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">1</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-light text-gray-900">Larry</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-light text-gray-900">Wild</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-light text-gray-900">@twitter</td>
+                    </tr>
+                    <tr  className='bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100 '>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">2</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-light text-gray-900">Larry</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-light text-gray-900">Wild</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-light text-gray-900">@twitter</td>
+                    </tr>
+                    <tr  className='bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100 '>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">3</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-light text-gray-900">Larry</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-light text-gray-900">Wild</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-light text-gray-900">@twitter</td>
+                    </tr>
+                  </tbody>
+                  </table>
                 </div>
+              </div>
             </div>
 
         </div>

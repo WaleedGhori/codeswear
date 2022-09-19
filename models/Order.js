@@ -7,7 +7,7 @@ const OrderSchema = new mongoose.Schema({
    products:{type:Object , required:true},
    address:{type:String ,required:true},
    ammount:{type:Number, required:true},
-   status:{type:String , default:'Pending' , required:true},
+   status:{type:String , default:'Initiated' , required:true},
   },{timestamps:true});
   mongoose.models = {}
   // export default mongoose.model.Order || mongoose.model("Order" , OrderSchema)
