@@ -27,7 +27,7 @@ const Login = () => {
       body: JSON.stringify(data),
     });
     let response = await res.json();
-    console.log(response);
+    // console.log(response);
     setEmail("");
     setPassword("");
 

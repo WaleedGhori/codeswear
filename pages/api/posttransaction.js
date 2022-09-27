@@ -13,7 +13,7 @@ let handler = async (req, res) => {
   }
  
     // res.status(200).json({ body:req.body })
-    res.redirect('/order', 200)
+    res.redirect('/order?id'+order_id, 200)
   }
 
   export default connectDb(handler)

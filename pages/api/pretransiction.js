@@ -2,12 +2,27 @@ const https = require('https');
 const Paytm = require('paytmchecksum');
 import Order from '../../models/Order';
 import connectDb from '../../middlewear/moongose';
+import Product from '../../models/Product';
 // const PaytmChecksum = require('./PaytmChecksum');
 let handler = async (req, res) => {
 
 if(req.method =="POST"){
     // check the cart is remperd or not --[Pending]
-
+    let product , sumTotal=0;
+    let cart = req.body.cart
+    for(let item in cart){
+        console.log(item );
+        sumTotal += cart[item].price * cart[item].qty 
+        product = await Product.findOne({slug:item})
+        if(product.price !=cart[item].price){
+            res.status(200).json({success:false ,"error":"The price of some item have changed. Please try again"})
+            return
+        }
+    }
+    if(sumTotal !== req.body.subtotal){
+        res.status(200).json({success:false ,"error":"The price of some item have changed. Please try again"})
+        return
+    }
     // check if the cart item is not out of stock --[Pending]
 
     // check if the cart item are valid --[Pending]
@@ -74,6 +89,7 @@ if(req.method =="POST"){
     
 //             post_res.on('end', function(){
 //                 // console.log('Response: ', response);
+                    // Response.success = true
 //                 resolve(JSON.parse(response).body)
 //             });
 //         });

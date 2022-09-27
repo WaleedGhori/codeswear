@@ -17,7 +17,8 @@ const [pincode, setPincode] = useState('');
 const [state, setState] = useState('');
 const [disabled, setDisabled] = useState(true);
 
-const handleChange = (e)=>{
+const handleChange = async(e)=>{
+    
     if(e.target.name =='name'){
         setName(e.target.value)
     }
@@ -30,14 +31,26 @@ const handleChange = (e)=>{
     else if(e.target.name =='phone'){
         setPhone(e.target.value)
     }
-    else if(e.target.name =='city'){
-        setCity(e.target.value)
-    }
     else if(e.target.name =='pincode'){
         setPincode(e.target.value)
-    }
-    else if(e.target.name =='state'){
-        setState(e.target.value)
+        if(e.target.value.length == 5) {
+            let pins = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/pincode`);
+            let pinJson = await pins.json();
+            console.log(pinJson);
+            if (Object.keys(pinJson).includes(e.target.value)){
+                setState(pinJson[e.target.value][1])
+                setCity(pinJson[e.target.value][0])
+            }
+            else{
+                setCity('')
+                setState('')
+            }
+            
+        }
+        else{
+            setCity('')
+            setState('')
+        }
     }  
     if(name && email && address && phone){
         setDisabled(false)  
@@ -148,13 +161,13 @@ const handleChange = (e)=>{
             <div className="px-2 w-1/2">
                 <div className="mb-4">
                     <label htmlFor="state" className="leading-7 text-sm text-gray-600">State</label>
-                    <input onChange={handleChange} value={state} type="text" id="state" name="state" className="w-full bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" readOnly />
+                    <input onChange={handleChange} value={state} type="text" id="state" name="state" className="w-full bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                 </div> 
             </div>
             <div className="px-2 w-1/2">
                 <div className="mb-4">
                 <label htmlFor="city" className="leading-7 text-sm text-gray-600">City</label>
-                    <input onChange={handleChange}  value={city} type="text" id="city" name="city" className="w-full bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" readOnly />
+                    <input onChange={handleChange}  value={city} type="text" id="city" name="city" className="w-full bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
                 </div>
             </div>
         </div>

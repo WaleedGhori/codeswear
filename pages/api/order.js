@@ -3,7 +3,6 @@ import React from 'react'
 import Order from '../../models/Order';
 import connectDb from '../../middlewear/moongose';
 
-
 let  handler =  async(req , res)=>{
  let order = await Order.find() 
  res.status(200).json({order})
