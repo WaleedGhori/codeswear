@@ -8,7 +8,7 @@ var jwt = require('jsonwebtoken');
 
 const handler = async(req , res)=>{
 
-let token  = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3QxQGdtYWlsLmNvbSIsIm5hbWUiOiJXYWxlZWQiLCJpYXQiOjE2NjQxNzMxNDUsImV4cCI6MTY2NDM0NTk0NX0._cmS7mSTKtk99uxQwoP_LsXm0qIK21GF3S-2cfGtteU"
+let token  = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3QxQGdtYWlsLmNvbSIsIm5hbWUiOiJXYWxlZWQiLCJpYXQiOjE2NjQ0MzU5NzksImV4cCI6MTY2NDYwODc3OX0.m60hmB7S2brECvk-GLK0LWiRo_YH8SfJ4xaOPxJTVv4"
 const decode = jwt.decode(token)
 const verify = jwt.verify(token, process.env.JWT_SECRET);
 let order = await Order.find({email:verify.email})

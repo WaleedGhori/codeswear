@@ -10,10 +10,18 @@ if(req.method =="POST"){
     // check the cart is remperd or not --[Pending]
     let product , sumTotal=0;
     let cart = req.body.cart
+    if(req.body.subtotal <= 0){
+        res.status(200).json({success:false ,"error":"Cart Empty! PLease build your cart and try again later!"})
+        return
+    }
     for(let item in cart){
         console.log(item );
         sumTotal += cart[item].price * cart[item].qty 
         product = await Product.findOne({slug:item})
+        if(product.availableQty < cart[item].qty){
+            res.status(200).json({success:false ,"error":"Some item of your cart went out os stock please try again!"})
+            return
+        }
         if(product.price !=cart[item].price){
             res.status(200).json({success:false ,"error":"The price of some item have changed. Please try again"})
             return
@@ -24,7 +32,14 @@ if(req.method =="POST"){
         return
     }
     // check if the cart item is not out of stock --[Pending]
-
+    if (req.body.phone.length !== 11 || !Number.isInteger(req.body.phone) ) {
+        res.status(200).json({success:false ,"error":"Please enter valid phone number"})
+        return
+    }
+    if (req.body.pincode.length !== 6 || !Number.isInteger(req.body.pincode) ) {
+        res.status(200).json({success:false ,"error":"Please enter pincode number"})
+        return
+    }
     // check if the cart item are valid --[Pending]
     let order  = Order({
         email:req.body.email,

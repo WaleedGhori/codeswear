@@ -4,8 +4,15 @@ import Order from "../models/Order";
 import { useEffect , useState} from "react";
 import Orders from "./orders";
 
-const MyOrder =({order}) => {
+const MyOrder =({order , clearCart}) => {
   const products = order.products
+  const router = useRouter();
+  useEffect(() => {
+    if(router.query.clearCart ==1){
+      clearCart()
+    }  
+  }, [])
+  
   // console.log("This is a pro",products);
   // console.log("This is super order",order);
   // const router = useRouter()

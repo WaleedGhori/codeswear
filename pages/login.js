@@ -32,7 +32,7 @@ const Login = () => {
     setPassword("");
 
     if (response.success) {
-      localStorage.setItem('token', response.token)
+      localStorage.setItem('myuser', JSON.stringify({token:response.token ,email:response.email }))
       toast.success("You are successfully Loged in", {
         position: "top-right",
         autoClose: 2000,

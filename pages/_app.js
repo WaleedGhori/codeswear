@@ -34,9 +34,9 @@ function MyApp({ Component, pageProps }) {
       localStorage.clear()
      
     }
-    const token = localStorage.getItem('token');
-    if(token){
-      setUser({value:token})
+    const myuser = JSON.parse(localStorage.getItem('myuser'));
+    if(myuser){
+      setUser({value:myuser , email:myuser.email})
     }
     setKey(Math.random())
 
@@ -44,7 +44,7 @@ function MyApp({ Component, pageProps }) {
 
 // logout from account
 const logout = () =>{
- localStorage.removeItem('token')
+ localStorage.removeItem('myuser')
  setUser({value:null})
  setKey(Math.random())
  router.push('/')
@@ -114,7 +114,7 @@ const logout = () =>{
         onLoaderFinished={() => setProgress(0)}
       />
   {key &&<Navbar logout={logout} user={user} buyNow={buyNow} key={key} cart={cart} clearCart={clearCart} removeToCart={removeToCart} addToCart={addToCart} saveCart={saveCart} subtotal={subtotal}/>}
-  <Component buyNow={buyNow} cart={cart} clearCart={clearCart} removeToCart={removeToCart} addToCart={addToCart} saveCart={saveCart} subtotal={subtotal} {...pageProps} />
+  <Component  buyNow={buyNow} cart={cart} clearCart={clearCart} removeToCart={removeToCart} addToCart={addToCart} saveCart={saveCart} subtotal={subtotal} {...pageProps} />
   <Footer/>
   </>
 )}

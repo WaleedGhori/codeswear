@@ -1,4 +1,5 @@
 import { AiOutlineShoppingCart, AiFillCloseCircle, AiFillPlusCircle, AiFillMinusCircle } from 'react-icons/ai';
+import {useEffect} from 'react'
 import Link from "next/link";
 import { useState } from 'react';
 import { BsFillBagCheckFill } from 'react-icons/bs';
@@ -7,7 +8,7 @@ import Script from 'next/script';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const Checkout = ({ cart, addToCart, removeToCart, subtotal }) => {
+const Checkout = ({cart, addToCart, removeToCart, subtotal }) => {
 const [name, setName] = useState('');
 const [email, setEmail] = useState('');
 const [address, setAddress] = useState('');
@@ -16,6 +17,15 @@ const [city, setCity] = useState('');
 const [pincode, setPincode] = useState('');
 const [state, setState] = useState('');
 const [disabled, setDisabled] = useState(true);
+const [user  ,setUser] = useState({value:null})
+useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('myuser'))
+    if(user.token){
+        setUser(user)
+        setEmail(user.email)
+    }
+    
+}, [])
 
 const handleChange = async(e)=>{
     
@@ -85,6 +95,7 @@ const handleChange = async(e)=>{
         // console.log(response);
 
     }   
+// if (txnRes.success) {}
 
     //     let txnRes= await a.json();
     //     let txnToken = txnRes.txnToken
@@ -106,7 +117,7 @@ const handleChange = async(e)=>{
     //             }
     //         }
     //     };
-
+// if (txnRes.success) {}
     //     window.Paytm.CheckoutJS.init(config).then(function onSuccess() {
     //         // after successfully updating configuration, invoke JS Checkout
     //         window.Paytm.CheckoutJS.invoke();
@@ -133,7 +144,8 @@ const handleChange = async(e)=>{
             <div className="px-2 w-1/2">
                 <div className="mb-4">
                     <label htmlFor="email" className="leading-7 text-sm text-gray-600">Email</label>
-                    <input onChange={handleChange} value={email} type="email" id="email" name="email" className="w-full bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                    {user && user.value ? <input  value={user.email} type="email" id="email" name="email" className="w-full bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" readOnly /> :<input onChange={handleChange} value={email} type="email" id="email" name="email" className="w-full bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" readOnly />}
+                    
                 </div>
             </div>
         </div>
@@ -147,7 +159,7 @@ const handleChange = async(e)=>{
             <div className="px-2 w-1/2">
                 <div className="mb-4">
                     <label htmlFor="phone" className="leading-7 text-sm text-gray-600">Phone</label>
-                    <input onChange={handleChange} value={phone} type="phone" id="phone" name="phone" className="w-full bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                    <input placeholder='Enter your valid phone number' onChange={handleChange} value={phone} type="phone" id="phone" name="phone" className="w-full bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                 </div>
             </div>
             <div className="px-2 w-1/2">

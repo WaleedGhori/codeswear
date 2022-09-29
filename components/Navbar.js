@@ -78,8 +78,8 @@ const cartref = useRef();
       <div className='font-bold my-2'>Subtotal Rs: {subtotal}</div>
 
       <div className="flex">
-      <Link href={'/checkout'}><button className="flex mx-2 mt-2 text-white bg-pink-500 border-0 py-2 px-2 focus:outline-none hover:bg-pink-400 rounded text-sm"><></><BsFillBagCheckFill className="m-1"/>Checkout</button></Link>
-      <button onClick={clearCart} className="flex mx-2 mt-2 text-white bg-pink-500 border-0 py-2 px-2 focus:outline-none hover:bg-pink-400 rounded text-sm"><></>Clear Cart</button>
+      <Link href={'/checkout'}><button disabled={Object.keys(cart).length === 0} className="disabled:bg-pink-300 flex mx-2 mt-2 text-white bg-pink-500 border-0 py-2 px-2 focus:outline-none hover:bg-pink-400 rounded text-sm"><></><BsFillBagCheckFill className="m-1"/>Checkout</button></Link>
+      <button disabled={Object.keys(cart).length === 0} onClick={clearCart} className="disabled:bg-pink-300 flex mx-2 mt-2 text-white bg-pink-500 border-0 py-2 px-2 focus:outline-none hover:bg-pink-400 rounded text-sm"><></>Clear Cart</button>
 
       </div>
     </div>
