@@ -18,7 +18,7 @@ const Orders = () => {
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({token:JSON.parse(localStorage.getItem("myuser").token)}),         
+        body: JSON.stringify({token:JSON.parse(localStorage.getItem("myuser")).token}),         
     }) 
     let res = await a.json();
     setOrders(res.order)

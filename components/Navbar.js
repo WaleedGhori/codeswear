@@ -4,29 +4,70 @@ import Link from "next/link";
 import { AiOutlineShoppingCart , AiFillCloseCircle,AiFillPlusCircle,AiFillMinusCircle } from 'react-icons/ai';
 import {BsFillBagCheckFill } from 'react-icons/bs';
 import {MdAccountCircle } from 'react-icons/md';
-import { Router } from "next/router";
+import { useRouter } from "next/router";
 
 
 const Navbar = ({logout ,user , cart, subtotal , addToCart , removeToCart , clearCart}) => {
 const [dropDown, setDropDown] = useState(false);
+const [sidebar, setSidebar] = useState(false)
 const cartref = useRef();
-
+const router = useRouter()
+useEffect(() => {
+  Object.keys(cart).length !==0  && setSidebar(true)
+  let exempted = ['/checkout', '/login', '/orders', 'order']
+  if(exempted.includes(router.pathname)){
+    setSidebar(false)
+  }
+  if(router.pathname == '/signup'){
+    setSidebar(false)
+  }
+  if(router.pathname == '/forgot'){
+    setSidebar(false)
+  }
+  if(router.pathname == '/tshirts'){
+    setSidebar(false)
+  }
+  if(router.pathname == '/hoddies'){
+    setSidebar(false)
+  }
+  if(router.pathname == '/stickers'){
+    setSidebar(false)
+  }
+  if(router.pathname == '/mugs'){
+    setSidebar(false)
+  }
+  if(router.pathname == '/'){
+    setSidebar(false)
+  }
+}, [])
 
   const togglecart = ()=>{
-    
-    if(cartref.current.classList.contains("translate-x-full")){
-      cartref.current.classList.remove("translate-x-full")
-      cartref.current.classList.add("translate-x-0")
-    } 
-    else if(!cartref.current.classList.contains("translate-x-full")){
-      cartref.current.classList.remove("translate-x-0")
-      cartref.current.classList.add("translate-x-full")
-    }
+    setSidebar(!sidebar)
+    // if(cartref.current.classList.contains("translate-x-full")){
+    //   cartref.current.classList.remove("translate-x-full")
+    //   cartref.current.classList.add("translate-x-0")
+    // } 
+    // else if(!cartref.current.classList.contains("translate-x-full")){
+    //   cartref.current.classList.remove("translate-x-0")
+    //   cartref.current.classList.add("translate-x-full")
+    // }
   }
   
 
   return(
- <div className="flex flex-col md:flex-row md:justify-start justify-center items-center my-1 shadow-md sticky z-10 top-0 bg-white">
+    <>
+     {!sidebar && <span >
+      {dropDown &&  
+      <div onMouseOver={()=>setDropDown(true)} onMouseLeave={()=>setDropDown(false)} className="absolute right-14 py-4 bg-pink-50 shadow-lg top-[3.7rem] rounded-md px-5 w-32 z-30">
+        <ul>
+          <Link href={'/myaccount'}><a><li className="py-1 hover:text-pink-700 font-bold text-sm">My Account</li></a></Link>
+          <Link href={'/orders'}><a><li className="py-1 hover:text-pink-700 font-bold text-sm">Orders</li></a></Link>
+          <li onClick={logout} className="py-1 hover:text-pink-700 font-bold text-sm">LogOut</li>
+        </ul>
+      </div>}
+    
+      </span>}
+ <div className={`flex flex-col md:flex-row md:justify-start justify-center items-center my-1 shadow-md sticky z-10 top-0 bg-white ${!sidebar&& 'overflow-hidden'}`}>
 
     <div className="logo mx-4">
       <Link href={'/'}><a><Image src='/codeswear.webp' alt='Codeswear' width={250} height={60}/></a></Link>
@@ -40,24 +81,20 @@ const cartref = useRef();
       </ul>
     </div>
     <div  className="cart my-3 md:m-auto items-center flex md:absolute md:right-0 md:top-5 md:mx-5">
-    <span onMouseOver={()=>setDropDown(true)} onMouseLeave={()=>setDropDown(false)}>
-      {dropDown &&  
-      <div onMouseOver={()=>setDropDown(true)} onMouseLeave={()=>setDropDown(false)} className="absolute right-8 py-4 bg-pink-50 shadow-lg top-8 rounded-md px-5 w-36">
-        <ul>
-          <Link href={'/myaccount'}><a><li className="py-1 hover:text-pink-700 font-bold text-sm">My Account</li></a></Link>
-          <Link href={'/orders'}><a><li className="py-1 hover:text-pink-700 font-bold text-sm">Orders</li></a></Link>
-          <li onClick={logout} className="py-1 hover:text-pink-700 font-bold text-sm">LogOut</li>
-        </ul>
-      </div>}
-    {user.value && <MdAccountCircle  className='text-pink-600 cursor-pointer mb-2 text-xl md:text-3xl md:my-1 mx-4'/>}
-      </span>
+
     {!user.value && <Link href={'/login'}>
       <a><button className="bg-pink-600 px-3 py-1 rounded-md text-md text-white mx-4  ">Login</button></a>
     </Link>}
+    {/* here we w=need to writw asome dropdown code 0000000=======  */}
+    <span onMouseOver={()=>setDropDown(true)} onMouseLeave={()=>setDropDown(false)}>
+    {user.value && <MdAccountCircle  className='text-pink-600 cursor-pointer mb-2 text-xl md:text-3xl md:my-1 mx-4'/>}
+    </span>
+
+
     <div className="px-2 rounded-md border-2 py-1 border-pink-600"><AiOutlineShoppingCart onClick={togglecart} className='text-pink-600  cursor-pointer text-xl '/> </div>
     </div> 
-    <div ref={cartref} className={`sidecart w-[100%] sm:w-[40%] h-[75vh] md:h-[100vh] overflow-y-scroll bg-pink-50 absolute right-0 top-0 px-8 py-10 transform transition-transform translate-x-full z-10`}>
-    {/* ${Object.keys(cart).length !==0  ?'translate-x-0':'translate-x-full'} */}
+    <div ref={cartref} className={`sidecart w-[100%] sm:w-[40%] h-[75vh] md:h-[100vh] overflow-y-scroll bg-pink-50 absolute top-0 px-8 py-10  transition-all  ${sidebar?'right-0':'-right-[40rem]'} z-10`}>
+   
     
       <h2 className="font-bold text-xl text-center">Shopping Cart</h2>
       <span onClick={togglecart} className="absolute text-pink-500 top-4 cursor-pointer text-2xl right-2"><AiFillCloseCircle/></span>
@@ -84,5 +121,7 @@ const cartref = useRef();
       </div>
     </div>
   </div>
+  </>
+
 )};
 export default Navbar;

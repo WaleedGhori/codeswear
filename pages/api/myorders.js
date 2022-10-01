@@ -12,6 +12,7 @@ let token  = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3QxQGdtYWlsL
 const decode = jwt.decode(token)
 const verify = jwt.verify(token, process.env.JWT_SECRET);
 let order = await Order.find({email:verify.email})
+// status:'Paid'
  res.status(200).json({order})
 }
 
