@@ -6,8 +6,11 @@ import Orders from "./orders";
 
 const MyOrder =({order , clearCart}) => {
   const products = order.products
+  const [date, setdate] = useState()
   const router = useRouter();
   useEffect(() => {
+    const d = new Date(order.createdAt)
+    setdate(d)
     if(router.query.clearCart ==1){
       clearCart()
     }  
@@ -44,6 +47,7 @@ const MyOrder =({order , clearCart}) => {
         <h2 className="text-gray-900 text-3xl title-font font-medium mb-2">Order Id:#   {order.orderId}</h2>
         
         <p className="leading-relaxed mb-2">Your Oder has been successfully placed.</p>
+        <p className="leading-relaxed mb-2">Order placed on: {date && date.toLocaleDateString("en-Us",{weekyear: "long" , year:"numeric" ,month:"long" ,day:"numeric"})}.</p>
         <p className="mb-4">Your payment is <span className="font-semibold">{order.status}</span></p>
         <div className="flex mb-4">
           <a className="flex-grow py-2 text-lg px-1">Item Description</a>
@@ -71,7 +75,7 @@ const MyOrder =({order , clearCart}) => {
           <span className="ml-auto text-gray-900">999</span>
         </div> */}
         <div className="flex flex-col my-8">
-          <span className="title-font font-medium text-2xl text-gray-900">SubTotal: $58.00</span>
+          {Object.keys(products).map((key)=>{return <span key={key} className="title-font font-medium text-2xl text-gray-900">SubTotal:{products[key].price} pkr</span>})}
           <div className="my-4">
           <button className="flex mx-0 text-white bg-pink-500 border-0 py-2 px-6 focus:outline-none hover:bg-pink-600 rounded">Track Order</button>
           </div>

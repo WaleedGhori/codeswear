@@ -27,6 +27,15 @@ useEffect(() => {
     
 }, [])
 
+useEffect(()=>{
+    if(name.length >3 && email.length>3 && address.length>3 && phone.length>3 && pincode.length >3){
+        setDisabled(false)  
+    }
+    else{
+        setDisabled(true)
+    }
+},[name , email , address, phone ,pincode])
+
 const handleChange = async(e)=>{
     
     if(e.target.name =='name'){
@@ -62,12 +71,6 @@ const handleChange = async(e)=>{
             setState('')
         }
     }  
-    if(name && email && address && phone){
-        setDisabled(false)  
-    }
-    else{
-        setDisabled(true)
-    }
   
 }
 
