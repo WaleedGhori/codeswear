@@ -19,7 +19,8 @@ if(req.method =="POST"){
         sumTotal += cart[item].price * cart[item].qty 
         product = await Product.findOne({slug:item})
         if(product.availableQty < cart[item].qty){
-            res.status(200).json({success:false ,"error":"Some item of your cart went out os stock please try again!"})
+            // console.log("Yes qty not available1",product.availableQty , cart[item].qty );
+            res.status(200).json({success:false ,"error":"Some item of your cart went out of stock please try again!"})
             return
         }
         if(product.price !=cart[item].price){
@@ -37,7 +38,7 @@ if(req.method =="POST"){
         return
     }
     if (req.body.pincode.length !== 5 || !Number.isInteger(Number(req.body.pincode)) ) {
-        res.status(200).json({success:false ,"error":"Please enter pincode number"})
+        res.status(200).json({success:false ,"error":"Please enter valid pincode number"})
         return
     }
     // check if the cart item are valid --[Pending]
@@ -49,6 +50,7 @@ if(req.method =="POST"){
         products:req.body.cart,
     })
     await order.save();
+    res.send({ success: 'true' });
 
 //     var paytmParams = {}
 // paytmParams.body = {

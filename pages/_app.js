@@ -15,11 +15,10 @@ function MyApp({ Component, pageProps }) {
   const router =useRouter()
 
   useEffect(() => {
-    console.log("hey iam using _app.js");
-  router.events.on('routeChangeStart' , ()=>{
+    router.events.on('routeChangeStart' , ()=>{
     setProgress(40)
   })
-  router.events.on('routeChangeComplete' , ()=>{
+    router.events.on('routeChangeComplete' , ()=>{
     setProgress(100)
   })
 

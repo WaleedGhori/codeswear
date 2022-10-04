@@ -55,7 +55,7 @@ const handleChange = async(e)=>{
         if(e.target.value.length == 5) {
             let pins = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/pincode`);
             let pinJson = await pins.json();
-            console.log(pinJson);
+            // console.log(pinJson);
             if (Object.keys(pinJson).includes(e.target.value)){
                 setState(pinJson[e.target.value][1])
                 setCity(pinJson[e.target.value][0])
@@ -75,15 +75,16 @@ const handleChange = async(e)=>{
 }
 
     const intiaitePayment = async () => {
-        toast.success('Payment Intiaite Successfully', {
-            position: "top-right",
-            autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            });
+        // toast.success('Payment Intiaite Successfully', {
+        //     position: "top-right",
+        //     autoClose: 2000,
+        //     hideProgressBar: false,
+        //     closeOnClick: true,
+        //     pauseOnHover: true,
+        //     draggable: true,
+        //     progress: undefined,
+        // });
+           
         let oid = Math.floor(Math.random()*Date.now());
         const data = {cart , subtotal , oid , email , pincode , name ,address ,phone};
         let a = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/pretransiction`, {
@@ -94,9 +95,32 @@ const handleChange = async(e)=>{
             body: JSON.stringify(data)         
         })
 
-        // let response = await a.json();
-        // console.log(response);
-
+        let response = await a.json();
+        if (response.success) {             
+            toast.success('Payment Intiaite Successfully', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+               
+            }
+        
+        else{
+            toast.error(response.error, {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });  
+        }
+        
     }   
 // if (txnRes.success) {}
 
@@ -147,8 +171,8 @@ const handleChange = async(e)=>{
             <div className="px-2 w-1/2">
                 <div className="mb-4">
                     <label htmlFor="email" className="leading-7 text-sm text-gray-600">Email</label>
-                    {user && user.value ? <input  value={user.email} type="email" id="email" name="email" className="w-full bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" readOnly /> :<input onChange={handleChange} value={email} type="email" id="email" name="email" className="w-full bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" readOnly />}
-                    
+                    {user && user.token ? <input  value={user.email} type="email" id="email" name="email" className="w-full bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" readOnly /> :<input onChange={handleChange} value={email} type="email" id="email" name="email" className="w-full bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" readOnly />}
+                    {/* here i am chane value from token */}
                 </div>
             </div>
         </div>
