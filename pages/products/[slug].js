@@ -150,7 +150,7 @@ const Post = ({ addToCart, product, variant, buyNow ,error}) => {
             </div>
             <div className="flex ">
               {product.availableQty<=0 &&<span className="title-font font-medium text-2xl ml-[-1rem] text-gray-900">out of Stocks</span>}
-              {product.availableQty >0 &&<span className="title-font font-medium text-2xl ml-[-1rem] text-gray-900">Rs 999</span>}
+              {product.availableQty >0 &&<span className="title-font font-medium text-2xl ml-[-1rem] text-gray-900">Rs: {product.price}</span>}
               <button disabled={product.availableQty<=0} onClick={() => { buyNow(slug, 1, product.price, product.title, product.size, product.color) }} className="disabled:bg-pink-300 flex md:ml-2  ml-2 sm:ml-8 text-white bg-pink-500 border-0 py-2 px-2 sm:px-4 md:px-6 focus:outline-none hover:bg-pink-600 rounded">Buy Now</button>
               <button disabled={product.availableQty<=0} onClick={() => { addToCart(slug, 1, product.price, product.title, product.size, product.color) }}  className="disabled:bg-pink-300 flex ml-2 md:ml-4 text-white bg-pink-500 border-0 py-2 px-2 sm:px-4md:px-6 focus:outline-none hover:bg-pink-600 rounded">Add to Cart</button>
               <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">

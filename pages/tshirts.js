@@ -3,7 +3,6 @@ import mongoose from "mongoose";
 import Product from "../models/Product";
 
 const Tshirts = ({products}) => {
-  console.log("This is a good product",products);
   return <div>
   <section className="text-gray-600 body-font">
     <div className="container px-5 py-24 mx-auto">

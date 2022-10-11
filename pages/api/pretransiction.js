@@ -2,15 +2,18 @@ const https = require('https');
 const Paytm = require('paytmchecksum');
 import Order from '../../models/Order';
 import connectDb from '../../middlewear/moongose';
+import pincodes from  '../../pincodes.json'
 import Product from '../../models/Product';
 // const PaytmChecksum = require('./PaytmChecksum');
-let handler = async (req, res) => {
-
+let handler = async (req, res) => {  
 if(req.method =="POST"){
     // check the cart is remperd or not --[Pending]
     let product , sumTotal=0;
     let cart = req.body.cart
-    
+    if(!Object.keys(pincodes).includes(req.body.pincode)) {
+        res.status(200).json({success:false, "error":"The pincode you have entered is not serviceable"})
+        return
+    }
     if(req.body.subtotal <= 0){
         res.status(200).json({success:false ,"error":"Cart Empty! PLease build your cart and try again later!"})
         return
@@ -51,6 +54,9 @@ if(req.method =="POST"){
     })
     await order.save();
     res.send({ success: 'true' });
+
+    
+
 
 //     var paytmParams = {}
 // paytmParams.body = {

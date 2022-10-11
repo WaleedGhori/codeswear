@@ -20,7 +20,7 @@ const [disabled, setDisabled] = useState(true);
 const [user  ,setUser] = useState({value:null})
 useEffect(() => {
     const user = JSON.parse(localStorage.getItem('myuser'))
-    if(user.token){
+    if(user && user.token){
         setUser(user)
         setEmail(user.email)
     }
@@ -75,6 +75,7 @@ const handleChange = async(e)=>{
 }
 
     const intiaitePayment = async () => {
+
         // toast.success('Payment Intiaite Successfully', {
         //     position: "top-right",
         //     autoClose: 2000,
@@ -152,7 +153,7 @@ const handleChange = async(e)=>{
     //         console.log("error => ", error);
     //     });
     // }
-    return <div className="container px-2 sm:mx-auto ">
+    return <div className="container mx-8 2lg:mx-auto ">
     <ToastContainer/>
 
         {/* <Head><meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0" />
@@ -171,7 +172,7 @@ const handleChange = async(e)=>{
             <div className="px-2 w-1/2">
                 <div className="mb-4">
                     <label htmlFor="email" className="leading-7 text-sm text-gray-600">Email</label>
-                    {user && user.token ? <input  value={user.email} type="email" id="email" name="email" className="w-full bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" readOnly /> :<input onChange={handleChange} value={email} type="email" id="email" name="email" className="w-full bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" readOnly />}
+                    {user && user.token ? <input  value={user.email} type="email" id="email" name="email" className="w-full bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" readOnly /> :<input onChange={handleChange} value={email} type="email" id="email" name="email" className="w-full bg-white rounded border border-gray-300 focus:border-pink-500 focus:ring-2 focus:ring-pink-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />}
                     {/* here i am chane value from token */}
                 </div>
             </div>
