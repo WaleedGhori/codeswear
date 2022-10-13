@@ -153,7 +153,7 @@ const handleChange = async(e)=>{
     //         console.log("error => ", error);
     //     });
     // }
-    return <div className="container mx-8 2lg:mx-auto ">
+    return <div className="container mx-auto my-9 ">
     <ToastContainer/>
 
         {/* <Head><meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0" />

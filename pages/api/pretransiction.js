@@ -47,8 +47,12 @@ if(req.method =="POST"){
     // check if the cart item are valid --[Pending]
     let order  = Order({
         email:req.body.email,
+        name:req.body.name,
         orderId:req.body.oid,
         address:req.body.address,
+        city:req.body.city,
+        phone:req.body.phone,
+        state:req.body.state,
         ammount:req.body.subtotal,
         products:req.body.cart,
     })
