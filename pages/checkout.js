@@ -19,14 +19,47 @@ const [state, setState] = useState('');
 const [disabled, setDisabled] = useState(true);
 const [user  ,setUser] = useState({value:null})
 useEffect(() => {
-    const user = JSON.parse(localStorage.getItem('myuser'))
-    if(user && user.token){
-        setUser(user)
-        setEmail(user.email)
+    const myuser = JSON.parse(localStorage.getItem('myuser'))
+    if(myuser && myuser.token){
+        setUser(myuser)
+        setEmail(myuser.email)
+        fetchData(myuser.token)
     }
     
 }, [])
+const fetchData = async (token) => {
+    const data = { token: token }
+    console.log(data);
+    let a = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/getuser`, {
+        method: 'POST', // or 'PUT'
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
 
+    let response = await a.json();
+    setAddress(response.address)
+    setPhone(response.phone)
+    setPincode(response.pincode)
+    setName(response.name)
+    getPincode(response.pincode)
+
+}
+
+const getPincode = async(pin)=>{
+    let pins = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/pincode`);
+    let pinJson = await pins.json();
+    // console.log(pinJson);
+    if (Object.keys(pinJson).includes(pin)){
+        setState(pinJson[pin][1])
+        setCity(pinJson[pin][0])
+    }
+    else{
+        setCity('')
+        setState('')
+    }
+}
 useEffect(()=>{
     if(name.length >3 && email.length>3 && address.length>3 && phone.length>3 && pincode.length >3){
         setDisabled(false)  
@@ -53,17 +86,7 @@ const handleChange = async(e)=>{
     else if(e.target.name =='pincode'){
         setPincode(e.target.value)
         if(e.target.value.length == 5) {
-            let pins = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/pincode`);
-            let pinJson = await pins.json();
-            // console.log(pinJson);
-            if (Object.keys(pinJson).includes(e.target.value)){
-                setState(pinJson[e.target.value][1])
-                setCity(pinJson[e.target.value][0])
-            }
-            else{
-                setCity('')
-                setState('')
-            }
+            getPincode(e.target.value)
             
         }
         else{
