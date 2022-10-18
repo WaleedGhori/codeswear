@@ -33,12 +33,12 @@ let order ;
     let products = order.products
     for(let slug in products){
       await Product.findOneAndUpdate({slug, slug}, {$inc:{"availableQty":-products[slug].qty}})
-      console.log("txn success");
+
     }
   }
   else if (req.body.STATUS == "PENDING") {
     await  Order.findOneAndUpdate({orderId: req.body.ORDERID}, {status:"Pending", paymentInfo:JSON.stringify(req.body)} )
-    console.log("pending");
+
   }
   res.status(200).json({body:req.body})
     // res.status(200).json({ body:req.body })

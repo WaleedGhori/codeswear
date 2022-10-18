@@ -112,6 +112,8 @@ const handleChange = async (e) =>{
               {password && password === cpassword &&
               <span className="text-green-600">Password match</span>}
             </form></div>}
+
+            
           {!router.query.token &&
                 <div><div className="rounded-md shadow-sm -space-y-px">
                 <div>
