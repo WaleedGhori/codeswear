@@ -4,9 +4,10 @@ import connectDb from '../../middlewear/moongose';
 
 let  handler =  async(req , res)=>{
 
-    if (req.method == 'POST') {
-        
+    if (req.method == 'POST') {    
+        console.log(req.body.length);
         for(let i = 0; i<req.body.length; i++){
+            console.log(req.body.length);
             let p = new Product({
                 title:req.body[i].title,
                 slug:req.body[i].slug, 
@@ -24,7 +25,7 @@ let  handler =  async(req , res)=>{
         res.status(200).json({success:"The item is successfully placed"})
     }
     else{
-    res.status(400).json({error:"This Method is not allowed"})}
+    res.status(400).json({error:"This Method is not allowed fsdfehfd cfdgdfds"})}
   
 }
 export default connectDb(handler)
