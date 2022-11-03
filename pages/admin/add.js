@@ -3,6 +3,8 @@ import { ThemeProvider } from "@mui/material/styles";
 import theme from "../../src/theme/theme";
 import FullLayout from "../../src/layouts/FullLayout";
 import { useState  , useEffect} from 'react';
+import mongoose from 'mongoose';
+import Product from '../../models/Product';
 import {
   Grid,
   Stack,
